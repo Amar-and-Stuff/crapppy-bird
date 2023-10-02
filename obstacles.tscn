@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5vvti84yse3n"]
+
+[ext_resource type="Script" path="res://obstacles.gd" id="1_llliq"]
+
+[sub_resource type="Gradient" id="Gradient_kms40"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r46hx"]
+gradient = SubResource("Gradient_kms40")
+width = 324
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35tr7"]
+size = Vector2(64, 324)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fakjs"]
+size = Vector2(20, 324)
+
+[node name="Obstacles" type="Node2D"]
+script = ExtResource("1_llliq")
+
+[node name="UpperObstacle" type="Area2D" parent="."]
+position = Vector2(0, 75)
+
+[node name="Sprite2D" type="Sprite2D" parent="UpperObstacle"]
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_r46hx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperObstacle"]
+shape = SubResource("RectangleShape2D_35tr7")
+
+[node name="LowerObstacle" type="Area2D" parent="."]
+position = Vector2(0, 598)
+
+[node name="Sprite2D" type="Sprite2D" parent="LowerObstacle"]
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_r46hx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerObstacle"]
+shape = SubResource("RectangleShape2D_35tr7")
+
+[node name="GapArea" type="Area2D" parent="."]
+position = Vector2(0, 324)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GapArea"]
+shape = SubResource("RectangleShape2D_fakjs")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rjpgcbv0w52f"]
+
+[ext_resource type="Texture2D" uid="uid://6s677c57y014" path="res://icon.svg" id="1_6yi7j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2k4e"]
+
+[node name="Bird" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6yi7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i2k4e")
+debug_color = Color(0.988235, 0.254902, 0.294118, 0.419608)

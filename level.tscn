@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgidmidqcwgps"]
+
+[ext_resource type="PackedScene" uid="uid://rjpgcbv0w52f" path="res://bird.tscn" id="1_b75s1"]
+[ext_resource type="Script" path="res://bird.gd" id="2_m73eb"]
+[ext_resource type="PackedScene" uid="uid://c5vvti84yse3n" path="res://obstacles.tscn" id="3_5s5xj"]
+
+[sub_resource type="Gradient" id="Gradient_v6mx8"]
+offsets = PackedFloat32Array(0, 0.154839, 0.864516, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.914307, 0.914307, 0.914307, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pqnl3"]
+gradient = SubResource("Gradient_v6mx8")
+width = 648
+height = 1152
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1152, 0)
+rotation = 1.5708
+texture = SubResource("GradientTexture2D_pqnl3")
+centered = false
+
+[node name="Bird" parent="." instance=ExtResource("1_b75s1")]
+position = Vector2(190, 318)
+script = ExtResource("2_m73eb")
+
+[node name="Obstacles" parent="." instance=ExtResource("3_5s5xj")]
