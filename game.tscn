@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccefqcp7i2m2p"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_eqgcl"]
+[ext_resource type="AudioStream" uid="uid://bjis2xakx7jwb" path="res://sfx/8Bit Title Screen.mp3" id="2_al6wl"]
+
+[node name="Game" type="Node"]
+process_mode = 3
+script = ExtResource("1_eqgcl")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_al6wl")
+autoplay = true

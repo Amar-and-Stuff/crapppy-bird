@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgidmidqcwgps"]
+[gd_scene load_steps=9 format=3 uid="uid://bgidmidqcwgps"]
 
+[ext_resource type="Script" path="res://level.gd" id="1_0eiub"]
 [ext_resource type="PackedScene" uid="uid://rjpgcbv0w52f" path="res://bird.tscn" id="1_b75s1"]
 [ext_resource type="Script" path="res://bird.gd" id="2_m73eb"]
 [ext_resource type="PackedScene" uid="uid://c5vvti84yse3n" path="res://obstacles.tscn" id="3_5s5xj"]
+[ext_resource type="FontFile" uid="uid://cubigmkrc45wo" path="res://secular-one/SecularOne-Regular.ttf" id="4_3hqdk"]
 
 [sub_resource type="Gradient" id="Gradient_v6mx8"]
 offsets = PackedFloat32Array(0, 0.154839, 0.864516, 1)
@@ -16,7 +18,12 @@ fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 0)
 metadata/_snap_enabled = true
 
+[sub_resource type="Theme" id="Theme_wapmv"]
+default_font = ExtResource("4_3hqdk")
+default_font_size = 48
+
 [node name="Level" type="Node2D"]
+script = ExtResource("1_0eiub")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1152, 0)
@@ -25,7 +32,47 @@ texture = SubResource("GradientTexture2D_pqnl3")
 centered = false
 
 [node name="Bird" parent="." instance=ExtResource("1_b75s1")]
-position = Vector2(190, 318)
+position = Vector2(312, 324)
 script = ExtResource("2_m73eb")
 
-[node name="Obstacles" parent="." instance=ExtResource("3_5s5xj")]
+[node name="ObstacleContainer" type="Node2D" parent="."]
+
+[node name="Obstacles" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(1500, 30)
+
+[node name="Obstacles2" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(1700, 40)
+
+[node name="Obstacles4" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(500, 0)
+
+[node name="Obstacles5" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(700, 25)
+
+[node name="Obstacles6" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(900, -25)
+
+[node name="Obstacles7" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(1100, -20)
+
+[node name="Obstacles8" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
+position = Vector2(1300, 10)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 508.0
+offset_top = 39.0
+offset_right = 605.0
+offset_bottom = 113.0
+theme = SubResource("Theme_wapmv")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "0"
+
+[connection signal="death_reported" from="ObstacleContainer/Obstacles" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles2" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles4" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles5" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles6" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles7" to="." method="_on_obstacles_death_reported"]
+[connection signal="death_reported" from="ObstacleContainer/Obstacles8" to="." method="_on_obstacles_death_reported"]

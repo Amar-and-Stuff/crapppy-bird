@@ -1,19 +1,28 @@
 extends Node2D
 
 @export var gap = 150
-@export var y_offset = 0
 @export var speed = 150
-
-# Called when the node enters the scene tree for the first time.
+signal death_reported
 func _ready():
-	position.y = y_offset
 	$UpperObstacle.position.y = gap/2
 	$LowerObstacle.position.y = 648 - gap/2
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.x -= (speed*delta)
 	if position.x < -100:
-		position.x = 1152 + 100
+		reposition()
+
+
+func _on_gap_area_body_entered(body):
+	$BirdScored.play()
+	body.score += 1
+
+
+func _on_obstacle_body_entered(body):
+	death_reported.emit()
+	
+func reposition():
+	position.x = 1300
+	position.y = randi_range(-50,50)

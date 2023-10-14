@@ -1,14 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://rjpgcbv0w52f"]
+[gd_scene load_steps=6 format=3 uid="uid://rjpgcbv0w52f"]
 
-[ext_resource type="Texture2D" uid="uid://6s677c57y014" path="res://icon.svg" id="1_6yi7j"]
+[ext_resource type="Texture2D" uid="uid://ddvvsunrf8oc6" path="res://assets/bird_normal.png" id="1_gq156"]
+[ext_resource type="Texture2D" uid="uid://bbrfrljnh1n57" path="res://assets/bird_flap.png" id="2_jcous"]
+[ext_resource type="AudioStream" uid="uid://dyccrwweyaewd" path="res://sfx/flap.mp3" id="4_e4vv0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_daks0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gq156")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jcous")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2k4e"]
+radius = 24.0
+height = 56.0
 
 [node name="Bird" type="CharacterBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6yi7j")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_daks0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_i2k4e")
 debug_color = Color(0.988235, 0.254902, 0.294118, 0.419608)
+
+[node name="BirdFlap" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e4vv0")

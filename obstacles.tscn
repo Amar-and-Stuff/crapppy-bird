@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5vvti84yse3n"]
+[gd_scene load_steps=7 format=3 uid="uid://c5vvti84yse3n"]
 
 [ext_resource type="Script" path="res://obstacles.gd" id="1_llliq"]
-
-[sub_resource type="Gradient" id="Gradient_kms40"]
-interpolation_mode = 2
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r46hx"]
-gradient = SubResource("Gradient_kms40")
-width = 324
+[ext_resource type="Texture2D" uid="uid://jsiw0vmd812p" path="res://assets/obstacle.png" id="2_yh262"]
+[ext_resource type="AudioStream" uid="uid://c0rbi8vum4ixy" path="res://sfx/point.mp3" id="3_kippw"]
+[ext_resource type="AudioStream" uid="uid://dcvyk3s3t88h4" path="res://sfx/flappy-bird-hit-sound.mp3" id="4_lbobp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35tr7"]
 size = Vector2(64, 324)
@@ -23,8 +18,10 @@ script = ExtResource("1_llliq")
 position = Vector2(0, 75)
 
 [node name="Sprite2D" type="Sprite2D" parent="UpperObstacle"]
-rotation = 1.5708
-texture = SubResource("GradientTexture2D_r46hx")
+position = Vector2(-4.24263, 4.24264)
+rotation = 3.14159
+scale = Vector2(0.424886, 0.575736)
+texture = ExtResource("2_yh262")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperObstacle"]
 shape = SubResource("RectangleShape2D_35tr7")
@@ -33,8 +30,9 @@ shape = SubResource("RectangleShape2D_35tr7")
 position = Vector2(0, 598)
 
 [node name="Sprite2D" type="Sprite2D" parent="LowerObstacle"]
-rotation = 1.5708
-texture = SubResource("GradientTexture2D_r46hx")
+position = Vector2(8, -1)
+scale = Vector2(0.424886, 0.575736)
+texture = ExtResource("2_yh262")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LowerObstacle"]
 shape = SubResource("RectangleShape2D_35tr7")
@@ -44,3 +42,13 @@ position = Vector2(0, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GapArea"]
 shape = SubResource("RectangleShape2D_fakjs")
+
+[node name="BirdScored" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kippw")
+
+[node name="BirdDash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lbobp")
+
+[connection signal="body_entered" from="UpperObstacle" to="." method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="LowerObstacle" to="." method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="GapArea" to="." method="_on_gap_area_body_entered"]

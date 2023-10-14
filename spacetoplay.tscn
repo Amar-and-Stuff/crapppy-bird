@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c87fj6ayy4tnq"]
+
+[ext_resource type="FontFile" uid="uid://cubigmkrc45wo" path="res://secular-one/SecularOne-Regular.ttf" id="1_2l2h4"]
+[ext_resource type="Script" path="res://spacetoplay.gd" id="1_qebng"]
+
+[sub_resource type="Gradient" id="Gradient_40oov"]
+colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0.929412, 0.203922, 0.203922, 0.203922, 0.929412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ao1hn"]
+gradient = SubResource("Gradient_40oov")
+
+[sub_resource type="Theme" id="Theme_o1lw2"]
+default_font = ExtResource("1_2l2h4")
+default_font_size = 64
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("GradientTexture2D_ao1hn")
+script = ExtResource("1_qebng")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -13.0
+offset_right = 50.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o1lw2")
+theme_override_colors/font_color = Color(0.545098, 0.545098, 0.545098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "press S or click to start"
