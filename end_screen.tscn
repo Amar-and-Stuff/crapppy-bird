@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://deek8qbv077hg"]
+
+[ext_resource type="Theme" uid="uid://fydreql4dkh" path="res://secular-one/font.tres" id="1_4ysdi"]
+[ext_resource type="Script" path="res://end_screen.gd" id="1_arnon"]
+[ext_resource type="Texture2D" uid="uid://5tbhalp2rgjx" path="res://assets/bird_flap_dead.png" id="3_4ig7e"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_arnon")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 106.0
+offset_right = 2.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme = ExtResource("1_4ysdi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Your Score : "
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -171.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_4ysdi")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Better Flap next time"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -41.5
+offset_right = 92.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ysdi")
+text = "Restart"
+
+[node name="DeadBird" type="Sprite2D" parent="."]
+texture = ExtResource("3_4ig7e")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

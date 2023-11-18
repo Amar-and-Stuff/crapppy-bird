@@ -25,4 +25,4 @@ func _on_obstacle_body_entered(body):
 	
 func reposition():
 	position.x = 1300
-	position.y = randi_range(-50,50)
+	position.y = randi_range(-65,65)

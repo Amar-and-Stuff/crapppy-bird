@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5vvti84yse3n"]
+[gd_scene load_steps=6 format=3 uid="uid://c5vvti84yse3n"]
 
 [ext_resource type="Script" path="res://obstacles.gd" id="1_llliq"]
 [ext_resource type="Texture2D" uid="uid://jsiw0vmd812p" path="res://assets/obstacle.png" id="2_yh262"]
 [ext_resource type="AudioStream" uid="uid://c0rbi8vum4ixy" path="res://sfx/point.mp3" id="3_kippw"]
 [ext_resource type="AudioStream" uid="uid://dcvyk3s3t88h4" path="res://sfx/flappy-bird-hit-sound.mp3" id="4_lbobp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_35tr7"]
-size = Vector2(64, 324)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fakjs"]
 size = Vector2(20, 324)
@@ -23,8 +20,8 @@ rotation = 3.14159
 scale = Vector2(0.424886, 0.575736)
 texture = ExtResource("2_yh262")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperObstacle"]
-shape = SubResource("RectangleShape2D_35tr7")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="UpperObstacle"]
+polygon = PackedVector2Array(-31, -166, -32, -141, -30, -53, -32, -12, -32, 22, -31, 71, -31, 139, -30, 162, -18, 165, 13, 164, 31, 163, 36, 19, 40, -168)
 
 [node name="LowerObstacle" type="Area2D" parent="."]
 position = Vector2(0, 598)
@@ -34,8 +31,8 @@ position = Vector2(8, -1)
 scale = Vector2(0.424886, 0.575736)
 texture = ExtResource("2_yh262")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerObstacle"]
-shape = SubResource("RectangleShape2D_35tr7")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="LowerObstacle"]
+polygon = PackedVector2Array(-36, 170, -34, 135, -35, 97, -33, 48, -30, -14, -32, -74, -31, -113, -31, -155, -22, -162, 1, -164, 23, -162, 34, -158, 36, -145, 38, -118, 37, -36, 35, 170)
 
 [node name="GapArea" type="Area2D" parent="."]
 position = Vector2(0, 324)
@@ -45,6 +42,7 @@ shape = SubResource("RectangleShape2D_fakjs")
 
 [node name="BirdScored" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kippw")
+volume_db = -5.638
 
 [node name="BirdDash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_lbobp")

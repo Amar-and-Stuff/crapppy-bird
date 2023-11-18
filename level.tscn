@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgidmidqcwgps"]
+[gd_scene load_steps=10 format=3 uid="uid://bgidmidqcwgps"]
 
 [ext_resource type="Script" path="res://level.gd" id="1_0eiub"]
 [ext_resource type="PackedScene" uid="uid://rjpgcbv0w52f" path="res://bird.tscn" id="1_b75s1"]
@@ -20,7 +20,10 @@ metadata/_snap_enabled = true
 
 [sub_resource type="Theme" id="Theme_wapmv"]
 default_font = ExtResource("4_3hqdk")
-default_font_size = 48
+default_font_size = 54
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bi3uo"]
+size = Vector2(1152, 10)
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0eiub")
@@ -38,36 +41,53 @@ script = ExtResource("2_m73eb")
 [node name="ObstacleContainer" type="Node2D" parent="."]
 
 [node name="Obstacles" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(1500, 30)
+position = Vector2(1684, 60)
 
 [node name="Obstacles2" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(1700, 40)
+position = Vector2(1884, -20)
 
 [node name="Obstacles4" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(500, 0)
+position = Vector2(684, 0)
 
 [node name="Obstacles5" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(700, 25)
+position = Vector2(884, 15)
 
 [node name="Obstacles6" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(900, -25)
+position = Vector2(1084, 50)
 
 [node name="Obstacles7" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(1100, -20)
+position = Vector2(1284, -30)
 
 [node name="Obstacles8" parent="ObstacleContainer" instance=ExtResource("3_5s5xj")]
-position = Vector2(1300, 10)
+position = Vector2(1484, 0)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 508.0
-offset_top = 39.0
-offset_right = 605.0
-offset_bottom = 113.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 542.0
+offset_top = 45.0
+offset_right = 616.0
+offset_bottom = 119.0
+grow_horizontal = 2
 theme = SubResource("Theme_wapmv")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "0"
+
+[node name="UpperEnd" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperEnd"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_bi3uo")
+
+[node name="LowerEnd" type="Area2D" parent="."]
+position = Vector2(0, 648)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerEnd"]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_bi3uo")
 
 [connection signal="death_reported" from="ObstacleContainer/Obstacles" to="." method="_on_obstacles_death_reported"]
 [connection signal="death_reported" from="ObstacleContainer/Obstacles2" to="." method="_on_obstacles_death_reported"]
@@ -76,3 +96,5 @@ text = "0"
 [connection signal="death_reported" from="ObstacleContainer/Obstacles6" to="." method="_on_obstacles_death_reported"]
 [connection signal="death_reported" from="ObstacleContainer/Obstacles7" to="." method="_on_obstacles_death_reported"]
 [connection signal="death_reported" from="ObstacleContainer/Obstacles8" to="." method="_on_obstacles_death_reported"]
+[connection signal="body_entered" from="UpperEnd" to="." method="_on_upper_end_body_entered"]
+[connection signal="body_entered" from="LowerEnd" to="." method="_on_lower_end_body_entered"]

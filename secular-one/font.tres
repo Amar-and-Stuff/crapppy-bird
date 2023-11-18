@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://fydreql4dkh"]
+
+[ext_resource type="FontFile" uid="uid://cubigmkrc45wo" path="res://secular-one/SecularOne-Regular.ttf" id="1_ybarb"]
+
+[resource]
+default_font = ExtResource("1_ybarb")
+default_font_size = 32

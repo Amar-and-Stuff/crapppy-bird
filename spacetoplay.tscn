@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c87fj6ayy4tnq"]
+[gd_scene load_steps=7 format=3 uid="uid://c87fj6ayy4tnq"]
 
-[ext_resource type="FontFile" uid="uid://cubigmkrc45wo" path="res://secular-one/SecularOne-Regular.ttf" id="1_2l2h4"]
 [ext_resource type="Script" path="res://spacetoplay.gd" id="1_qebng"]
+[ext_resource type="Theme" uid="uid://fydreql4dkh" path="res://secular-one/font.tres" id="2_5ytb8"]
+[ext_resource type="Texture2D" uid="uid://bbrfrljnh1n57" path="res://assets/bird_flap.png" id="3_phch4"]
 
 [sub_resource type="Gradient" id="Gradient_40oov"]
 colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0.929412, 0.203922, 0.203922, 0.203922, 0.929412)
@@ -9,31 +10,180 @@ colors = PackedColorArray(0.203922, 0.203922, 0.203922, 0.929412, 0.203922, 0.20
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ao1hn"]
 gradient = SubResource("Gradient_40oov")
 
-[sub_resource type="Theme" id="Theme_o1lw2"]
-default_font = ExtResource("1_2l2h4")
-default_font_size = 64
+[sub_resource type="Theme" id="Theme_6edi1"]
+Panel/colors/col = Color(0.458824, 0.458824, 0.458824, 1)
+Panel/styles/panel = null
 
-[node name="TextureRect" type="TextureRect"]
-offset_right = 1152.0
-offset_bottom = 648.0
+[node name="SpaceToPlay" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("GradientTexture2D_ao1hn")
 script = ExtResource("1_qebng")
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -13.0
-offset_right = 50.5
-offset_bottom = 13.0
+offset_left = -84.0
+offset_top = -37.5
+offset_right = 84.0
+offset_bottom = 37.5
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_o1lw2")
-theme_override_colors/font_color = Color(0.545098, 0.545098, 0.545098, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-text = "press S or click to start"
+theme = ExtResource("2_5ytb8")
+text = "PLAY"
+
+[node name="BirdImage" type="Sprite2D" parent="."]
+texture = ExtResource("3_phch4")
+
+[node name="CreditsAndSocial" type="Button" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 385.0
+offset_right = 779.0
+offset_bottom = 456.0
+theme = ExtResource("2_5ytb8")
+text = "Credits and DEV Handles"
+
+[node name="PopUp" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = 112.0
+offset_right = -141.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6edi1")
+color = Color(0.105882, 0.105882, 0.105882, 0.815686)
+
+[node name="Credits" type="Label" parent="PopUp"]
+layout_mode = 2
+offset_left = 104.0
+offset_top = 71.0
+offset_right = 237.0
+offset_bottom = 121.0
+theme = ExtResource("2_5ytb8")
+text = "CREDITS:"
+
+[node name="MusicCredit" type="Label" parent="PopUp"]
+layout_mode = 2
+offset_left = 163.0
+offset_top = 117.0
+offset_right = 272.0
+offset_bottom = 167.0
+theme = ExtResource("2_5ytb8")
+text = "MUSIC:"
+
+[node name="Social" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 174.0
+offset_right = 326.0
+offset_bottom = 224.0
+theme = ExtResource("2_5ytb8")
+text = "DEV HANDLES:"
+
+[node name="Insta" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 220.0
+offset_right = 323.0
+offset_bottom = 270.0
+theme = ExtResource("2_5ytb8")
+text = "INSTAGRAM:"
+
+[node name="Mast" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 273.0
+offset_right = 319.0
+offset_bottom = 323.0
+theme = ExtResource("2_5ytb8")
+text = "MASTADON:"
+
+[node name="Twitter" type="Label" parent="PopUp"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 334.0
+offset_right = 332.0
+offset_bottom = 384.0
+theme = ExtResource("2_5ytb8")
+text = "TWITTER (X):"
+
+[node name="InstaLink" type="LinkButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 340.0
+offset_top = 221.0
+offset_right = 553.0
+offset_bottom = 268.0
+theme = ExtResource("2_5ytb8")
+text = "@amarnath_0"
+uri = "https://www.instagram.com/amarnath_0/"
+
+[node name="MastLink" type="LinkButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 273.0
+offset_right = 842.0
+offset_bottom = 320.0
+theme = ExtResource("2_5ytb8")
+text = "@amar_and_stuff@fosstodon.org"
+uri = "https://fosstodon.org/@amar_and_stuff"
+
+[node name="TwitterLink" type="LinkButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 331.0
+offset_right = 565.0
+offset_bottom = 378.0
+theme = ExtResource("2_5ytb8")
+text = "@amarnath_0"
+uri = "https://twitter.com/amarnath_0"
+
+[node name="LinkButton" type="LinkButton" parent="PopUp"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 118.0
+offset_right = 574.0
+offset_bottom = 165.0
+theme = ExtResource("2_5ytb8")
+text = "@JothTaylorMusic"
+uri = "https://twitter.com/JothTaylorMusic"
+
+[node name="ClosePopUp" type="Button" parent="PopUp"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -100.0
+offset_right = 31.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_5ytb8")
+text = "Close"
+
+[connection signal="pressed" from="Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CreditsAndSocial" to="." method="_on_credits_and_social_pressed"]
+[connection signal="pressed" from="PopUp/ClosePopUp" to="." method="_on_close_pop_up_pressed"]
